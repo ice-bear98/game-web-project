@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { auth } from "../Firebase/firebaseConfig";
+import { auth } from "../Firebase/FirebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 interface IForm {

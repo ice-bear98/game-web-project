@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
 //firebase
-import { auth } from "../Firebase/firebaseConfig";
+import { auth } from "../Firebase/FirebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { signInWithGoogle } from "../Firebase/firebaseFuctions";
+import { signInWithGoogle } from "../Firebase/FirebaseFuctions";
 
 // fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
