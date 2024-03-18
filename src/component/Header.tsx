@@ -16,7 +16,7 @@ export default function header() {
 
     return (
         <div className="w-full h-24 bg-slate-950 text-white">
-            <div className="flex py-12 justify-between max-w-7xl mx-auto my-0">
+            <div className="flex py-12 items-center justify-between max-w-7xl mx-auto my-0">
                 <div className="flex  space-x-4">
                     <div className="text-amber-200 text-3xl leading-5">
                         <Link className="" to={"/"}>
