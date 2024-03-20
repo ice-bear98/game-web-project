@@ -1,6 +1,6 @@
 import DefaultLayout from "../layout/DefaultLayout";
 
-import LoginLayout from "../layout/loginLayout";
+import LoginLayout from "../layout/LoginLayout";
 import Community from "../pages/Community";
 import CommunityDetail from "../pages/CommunityDetail";
 import CommunityWrite from "../pages/CommunityWrite";
