@@ -7,8 +7,6 @@ export default function header() {
     const isLoggedIn = useRecoilValue(LoggedInState);
     const setIsLoggedIn = useSetRecoilState(LoggedInState);
 
-    console.log(LoggedInState);
-
     const handleLogout = async () => {
         await logout();
         setIsLoggedIn(false);
