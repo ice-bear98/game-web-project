@@ -9,14 +9,10 @@ export default function Home() {
     const gameList = useRecoilValue(fetchGameList);
     const [selectedGenre, setSelectedGenre] = useState("All");
     const [currentPage, setCurrentPage] = useState(1);
-    const totalGamesCount = gameList.length;
     const navigate = useNavigate();
 
-    console.log(gameList);
     const handlePageChange = (pageNumber: number) => {
-        console.log(`active page is ${pageNumber}`);
         setCurrentPage(pageNumber);
-        // 페이지 변경 시 필요한 로직 추가 (예: 새로운 데이터 로딩)
     };
 
     const filteredGames =
@@ -26,14 +22,9 @@ export default function Home() {
                   game.genres.some((genre: any) => genre.name === selectedGenre)
               );
 
-    // 한 페이지에 표시할 아이템의 최대 개수
     const itemCount = 15;
-
-    // 현재 페이지에서 표시할 게임 목록의 시작 인덱스
     const indexOfLastItem = currentPage * itemCount;
     const indexOfFirstItem = indexOfLastItem - itemCount;
-
-    // 현재 페이지에서 표시할 게임 목록
     const currentGames = filteredGames.slice(indexOfFirstItem, indexOfLastItem);
 
     const genres = [
@@ -56,7 +47,10 @@ export default function Home() {
                     {genres.map((genre) => (
                         <button
                             key={genre}
-                            onClick={() => setSelectedGenre(genre)}
+                            onClick={() => {
+                                setSelectedGenre(genre);
+                                setCurrentPage(1);
+                            }}
                             className={`px-4 py-2 rounded-lg 
                             ${
                                 selectedGenre === genre
@@ -94,13 +88,13 @@ export default function Home() {
                     <Pagination
                         activePage={currentPage}
                         itemsCountPerPage={15}
-                        totalItemsCount={totalGamesCount}
+                        totalItemsCount={filteredGames.length}
                         pageRangeDisplayed={5}
                         prevPageText={"‹"}
                         nextPageText={"›"}
                         onChange={handlePageChange}
-                        itemClass="page-item" // 페이지 아이템에 적용될 클래스
-                        linkClass="page-link" // 페이지 링크에 적용될 클래스
+                        itemClass="page-item"
+                        linkClass="page-link"
                     />
                 </div>
             </div>
