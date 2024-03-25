@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { useParams } from "react-router-dom";
 import { GameInfo, fetchGameList } from "../atom/GameList";
-import CommentsSection from "../component/Comments";
+import Comments from "../component/Comments";
+
 export default function GameDetail() {
     const { id } = useParams();
     const gameList = useRecoilValue(fetchGameList);
@@ -103,7 +104,7 @@ export default function GameDetail() {
                     </div>
                 </div>
             )}
-            <CommentsSection gameId={String(game.id)} />
+            <Comments gameId={id ?? ""} />
         </div>
     );
 }
