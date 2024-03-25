@@ -25,10 +25,15 @@ const Comments = ({ gameId }: { gameId: string }) => {
         onValue(commentsRef, (snapshot) => {
             const data = snapshot.val();
             const loadedComments = data
-                ? Object.entries(data).map(([key, value]) => ({
-                      id: key,
-                      ...(value as Comment),
-                  }))
+                ? Object.entries(data).map(([key, value]) => {
+                      const commentValue = value as Comment;
+                      return {
+                          id: key,
+                          userId: commentValue.userId,
+                          text: commentValue.text,
+                          timestamp: commentValue.timestamp,
+                      };
+                  })
                 : [];
             setComments(loadedComments);
             console.log(data);
