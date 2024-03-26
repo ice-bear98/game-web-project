@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ref, onValue } from "firebase/database";
 import { realtimeDb } from "../Firebase/FirebaseConfig";
+import Pagination from "react-js-pagination";
 
 interface Post {
     id: string;
@@ -13,6 +14,9 @@ interface Post {
 
 export default function Community() {
     const [posts, setPosts] = useState<Post[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const postsPerPage = 10;
+
     const topFivePosts = useMemo(
         () => [...posts].sort((a, b) => b.views - a.views).slice(0, 5),
         [posts]
@@ -38,6 +42,17 @@ export default function Community() {
             setPosts(sortedPosts);
         });
     }, []);
+
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = useMemo(
+        () => posts.slice(indexOfFirstPost, indexOfLastPost),
+        [posts, currentPage]
+    );
+
+    const handlePageChange = (pageNumber: number) => {
+        setCurrentPage(pageNumber);
+    };
 
     return (
         <div className="max-w-4xl mx-auto">
@@ -69,7 +84,7 @@ export default function Community() {
                 글쓰기
             </Link>
             <div className="mt-4 pb-4">
-                {posts.map((post) => (
+                {currentPosts.map((post) => (
                     <div key={post.id} className="mb-4 p-4 shadow rounded-lg">
                         <div className="flex justify-between items-center">
                             <div>
@@ -89,6 +104,19 @@ export default function Community() {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="pagination-container">
+                <Pagination
+                    activePage={currentPage}
+                    itemsCountPerPage={10}
+                    totalItemsCount={posts.length}
+                    pageRangeDisplayed={5}
+                    prevPageText={"‹"}
+                    nextPageText={"›"}
+                    onChange={handlePageChange}
+                    itemClass="page-item"
+                    linkClass="page-link"
+                />
             </div>
         </div>
     );
