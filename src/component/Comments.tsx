@@ -11,7 +11,7 @@ interface Comment {
     timestamp: string;
 }
 
-const Comments = ({ gameId }: { gameId: string }) => {
+const Comments = ({ postId }: { postId: string }) => {
     const user = useRecoilValue(userState);
     const [comments, setComments] = useState<Comment[]>([]);
     const [commentText, setCommentText] = useState("");
@@ -21,7 +21,7 @@ const Comments = ({ gameId }: { gameId: string }) => {
     const [editingText, setEditingText] = useState("");
 
     useEffect(() => {
-        const commentsRef = ref(realtimeDb, `comments/${gameId}`);
+        const commentsRef = ref(realtimeDb, `comments/${postId}`);
         onValue(commentsRef, (snapshot) => {
             const data = snapshot.val();
             const loadedComments = data
@@ -42,7 +42,7 @@ const Comments = ({ gameId }: { gameId: string }) => {
         return () => {
             off(commentsRef);
         };
-    }, [gameId]);
+    }, [postId]);
 
     const handleCommentSubmit = () => {
         if (!user || !user.uid) {
@@ -55,7 +55,7 @@ const Comments = ({ gameId }: { gameId: string }) => {
             return;
         }
 
-        const commentsRef = ref(realtimeDb, `comments/${gameId}`);
+        const commentsRef = ref(realtimeDb, `comments/${postId}`);
         const newCommentRef = push(commentsRef);
         set(newCommentRef, {
             userId: user.uid,
@@ -74,7 +74,7 @@ const Comments = ({ gameId }: { gameId: string }) => {
     };
 
     const saveEdit = (commentId: string) => {
-        const commentRef = ref(realtimeDb, `comments/${gameId}/${commentId}`);
+        const commentRef = ref(realtimeDb, `comments/${postId}/${commentId}`);
         if (!user || !user.uid) {
             alert("로그인이 필요합니다.");
             return;
@@ -91,7 +91,7 @@ const Comments = ({ gameId }: { gameId: string }) => {
     };
 
     const handleDelete = (commentId: string) => {
-        const commentRef = ref(realtimeDb, `comments/${gameId}/${commentId}`);
+        const commentRef = ref(realtimeDb, `comments/${postId}/${commentId}`);
         remove(commentRef);
     };
 
@@ -160,6 +160,9 @@ const Comments = ({ gameId }: { gameId: string }) => {
                                         {new Date(
                                             comment.timestamp
                                         ).toLocaleString()}
+                                        <span className="ml-2">
+                                            유저 아이디: {user?.uid}
+                                        </span>
                                     </p>
                                 </div>
                                 {user?.uid === comment.userId && (

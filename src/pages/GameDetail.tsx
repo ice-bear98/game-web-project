@@ -75,13 +75,13 @@ export default function GameDetail() {
             </div>
             <div>
                 <h3 className="text-xl font-semibold mb-2">스크린샷:</h3>
-                <div className="flex overflow-x-auto space-x-4">
+                <div className="flex overflow-x-auto space-x-4 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-blue-300">
                     {game.short_screenshots.map((screenshot: any) => (
                         <img
                             key={screenshot.id}
                             src={screenshot.image}
                             alt="스크린샷"
-                            className="min-w-[100px] h-[100px] rounded-md shadow-md "
+                            className="min-w-[250px] h-[200px] rounded-md shadow-md "
                             onClick={() => openModal(screenshot.image)}
                         />
                     ))}
@@ -104,7 +104,7 @@ export default function GameDetail() {
                     </div>
                 </div>
             )}
-            <Comments gameId={id ?? ""} />
+            <Comments postId={id ?? ""} />
         </div>
     );
 }
