@@ -41,15 +41,13 @@ export default function CommunityDetail() {
 
     return (
         <div className="max-w-4xl mx-auto py-8 p-4">
-            <h2 className="text-3xl font-bold text-center mb-4">
-                {post.title}
-            </h2>
+            <h2 className="text-3xl font-bold text-center ">{post.title}</h2>
             <div className="mb-4 text-center text-gray-500">
                 작성자: {post.author} | 작성일:{" "}
                 {new Date(post.created).toLocaleDateString()} | 조회수:{" "}
                 {post.views}
             </div>
-            <article className="prose lg:prose-xl mx-auto">
+            <article className="whitespace-pre-wrap prose lg:prose-xl p-4 mb-9 mx-auto min-h-80 rounded-lg bg-gray-200">
                 {post.content}
             </article>
             <Comments postId={id ?? ""} />

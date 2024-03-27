@@ -55,39 +55,16 @@ export default function Community() {
     };
 
     return (
-        <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">조회수 Top 5</h2>
-            <div className="mb-8">
-                {topFivePosts.map((post) => (
-                    <div key={post.id} className="mb-4 p-4 shadow rounded-lg">
-                        <div className="flex justify-between items-center">
-                            <h3 className="text-lg font-semibold">
-                                <Link to={`/community/${post.id}`}>
-                                    {post.title}
-                                </Link>
-                            </h3>
-                            <p className="text-gray-500">
-                                글쓴이: {post.author} / 등록일:{" "}
-                                {new Date(post.created).toLocaleDateString()} /
-                                조회수: {post.views}
-                            </p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <h2 className="text-2xl font-bold mb-4">전체게시판</h2>
-            <Link
-                to="/CommunityWrite"
-                className="mb-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
-            >
-                글쓰기
-            </Link>
-            <div className="mt-4 pb-4">
-                {currentPosts.map((post) => (
-                    <div key={post.id} className="mb-4 p-4 shadow rounded-lg">
-                        <div className="flex justify-between items-center">
-                            <div>
+        <div className="max-w-7xl mx-auto bg-slate-600 ">
+            <div>
+                <h2 className="text-2xl font-bold mb-4 ">조회수 Top 5</h2>
+                <div className="mb-8">
+                    {topFivePosts.map((post) => (
+                        <div
+                            key={post.id}
+                            className="mb-4 p-4 shadow rounded-lg bg-white"
+                        >
+                            <div className="flex justify-between items-center ">
                                 <h3 className="text-lg font-semibold">
                                     <Link to={`/community/${post.id}`}>
                                         {post.title}
@@ -102,8 +79,43 @@ export default function Community() {
                                 </p>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+            </div>
+
+            <div>
+                <h2 className="text-2xl font-bold mb-4">전체게시판</h2>
+                <Link
+                    to="/CommunityWrite"
+                    className="mb-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
+                >
+                    글쓰기
+                </Link>
+                <div className="mt-4 pb-4">
+                    {currentPosts.map((post) => (
+                        <div
+                            key={post.id}
+                            className="mb-4 p-4 shadow rounded-lg bg-white"
+                        >
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    <h3 className="text-lg font-semibold">
+                                        <Link to={`/community/${post.id}`}>
+                                            {post.title}
+                                        </Link>
+                                    </h3>
+                                    <p className="text-gray-500">
+                                        글쓴이: {post.author} / 등록일:{" "}
+                                        {new Date(
+                                            post.created
+                                        ).toLocaleDateString()}{" "}
+                                        / 조회수: {post.views}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
             <div className="pagination-container">
                 <Pagination
