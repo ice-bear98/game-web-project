@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     getAuth,
     reauthenticateWithCredential,
@@ -8,6 +8,8 @@ import {
     signOut,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { userState } from "../atom/UserLoginState";
+import { useRecoilValue } from "recoil";
 
 export default function Mypage() {
     const [showChangePassword, setShowChangePassword] = useState(false);
@@ -15,8 +17,16 @@ export default function Mypage() {
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [error, setError] = useState("");
+    const user = useRecoilValue(userState);
     const auth = getAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user) {
+            alert("로그인이 필요한 기능입니다.");
+            navigate("/login");
+        }
+    }, [user, navigate]);
 
     const handleShowChangePassword = () => {
         setShowChangePassword(!showChangePassword);

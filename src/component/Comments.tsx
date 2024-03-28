@@ -132,7 +132,7 @@ const Comments = ({ postId }: { postId: string }) => {
                 {comments.map((comment) => (
                     <div
                         key={comment.id}
-                        className="bg-gray-100 p-4 rounded-lg shadow"
+                        className="bg-gray-100 p-4 rounded-lg shadow "
                     >
                         {editingCommentId === comment.id ? (
                             <div>
