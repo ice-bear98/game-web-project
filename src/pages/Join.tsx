@@ -35,10 +35,10 @@ export default function Join() {
     };
 
     return (
-        <div className="bg-login-bg flex justify-center">
+        <div className="bg-slate-700 flex justify-center">
             <form
                 onSubmit={handleSubmit(onCreateUser)}
-                className=" w-4/5 py-12  max-w-7xl  mx-auto my-10  bg-slate-800 text-gray-700 flex flex-col justify-end items-center"
+                className=" w-4/5 py-12  max-w-7xl  mx-auto my-10  bg-slate-900 text-gray-700 flex flex-col justify-end items-center"
             >
                 <Link to={"/"} className="text-amber-200 text-5xl mb-5">
                     GameWorld

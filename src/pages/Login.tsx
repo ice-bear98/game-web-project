@@ -57,8 +57,8 @@ export default function Login() {
     };
 
     return (
-        <div className="bg-login-bg flex justify-center">
-            <div className=" w-4/5 py-12  max-w-7xl  mx-auto my-10  bg-slate-800 text-gray-700">
+        <div className="bg-slate-700 flex justify-center">
+            <div className=" w-3/5 py-12  max-w-7xl  mx-auto my-5  bg-slate-900 text-gray-700">
                 <div className="text-5xl flex flex-col justify-end items-center ">
                     <Link to={"/"} className="text-amber-200 mb-5">
                         GameWorld
