@@ -1,10 +1,22 @@
 import { useRecoilValue } from "recoil";
 import { fetchGameNews } from "../atom/GameNews";
 
+interface NewsArticle {
+    url: string;
+    image: string;
+    title: string;
+    description: string;
+    publishedAt: string;
+    source: {
+        name: string;
+        url: string;
+    };
+}
+
 export default function GameNews() {
     const newsList = useRecoilValue(fetchGameNews);
 
-    const handleNewsClick = (url: any) => {
+    const handleNewsClick = (url: string) => {
         window.open(url, "_blank", "noopener,noreferrer");
     };
 
@@ -14,7 +26,7 @@ export default function GameNews() {
                 Game News
             </h1>
             {newsList.length > 0 ? (
-                newsList.map((article: any, index: any) => (
+                newsList.map((article: NewsArticle, index: number) => (
                     <div
                         key={index}
                         className="flex items-start mb-6 border-b border-gray-200 pb-4 cursor-pointer"

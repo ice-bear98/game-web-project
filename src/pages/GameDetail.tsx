@@ -5,7 +5,7 @@ import { GameInfo, fetchGameList } from "../atom/GameList";
 import Comments from "../component/Comments";
 
 export default function GameDetail() {
-    const { id } = useParams();
+    const { id } = useParams<{ id: string }>();
     const gameList = useRecoilValue(fetchGameList);
     const [showModal, setShowModal] = useState(false);
     const [selectedImage, setSelectedImage] = useState("");
@@ -49,7 +49,7 @@ export default function GameDetail() {
                     <p className="mb-1">출시일: {game.released}</p>
                     <p className="mb-1">
                         장르:{" "}
-                        {game.genres.map((genre: any) => genre.name).join(", ")}
+                        {game.genres.map((genre) => genre.name).join(", ")}
                     </p>
                     <p className="mb-1">플레이 시간: {game.playtime}시간</p>
                     <p className="mb-1">Metacritic 점수: {game.metacritic}</p>
@@ -65,18 +65,18 @@ export default function GameDetail() {
                     <p className="mb-1">
                         스토어:{" "}
                         {game.stores
-                            .map((store: any) => store.store.name)
+                            .map((store) => store.store.name)
                             .join(", ")}
                     </p>
                     <p className="mb-4">
-                        태그: {game.tags.map((tag: any) => tag.name).join(", ")}
+                        태그: {game.tags.map((tag) => tag.name).join(", ")}
                     </p>
                 </div>
             </div>
             <div>
                 <h3 className="text-xl font-semibold mb-2">스크린샷:</h3>
                 <div className="flex overflow-x-auto space-x-4 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-blue-300">
-                    {game.short_screenshots.map((screenshot: any) => (
+                    {game.short_screenshots.map((screenshot) => (
                         <img
                             key={screenshot.id}
                             src={screenshot.image}

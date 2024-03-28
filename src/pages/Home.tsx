@@ -1,9 +1,13 @@
 import { useRecoilValue } from "recoil";
-import { fetchGameList } from "../atom/GameList";
+import { GameInfo, fetchGameList } from "../atom/GameList";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import "../index.css";
+
+interface Genre {
+    name: string;
+}
 
 export default function Home() {
     const gameList = useRecoilValue(fetchGameList);
@@ -18,8 +22,10 @@ export default function Home() {
     const filteredGames =
         selectedGenre === "All"
             ? gameList
-            : gameList.filter((game: any) =>
-                  game.genres.some((genre: any) => genre.name === selectedGenre)
+            : gameList.filter((game: GameInfo) =>
+                  game.genres.some(
+                      (genre: Genre) => genre.name === selectedGenre
+                  )
               );
 
     const itemCount = 15;
@@ -64,7 +70,7 @@ export default function Home() {
 
             <div className="grid grid-cols-3 gap-3 ">
                 {currentGames.length > 0 ? (
-                    currentGames.map((game: any) => (
+                    currentGames.map((game: GameInfo) => (
                         <div
                             key={game.id}
                             onClick={() => handleGameListDetail(game.id)}

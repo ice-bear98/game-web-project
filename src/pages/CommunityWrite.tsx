@@ -18,7 +18,7 @@ export default function CommunityWrite() {
         }
     }, [user, navigate]);
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const postsRef = ref(realtimeDb, "community/posts");
