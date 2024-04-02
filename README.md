@@ -1,34 +1,26 @@
 # game-web-project
+__게임을 좋아하시는 분들이 게임검색하며 평점 및 사용자 댓글 후기 같은걸 보면서 소통할 수 있고 게시판에서 자유롭게 대화나눌수 있는 사이트를 만들어봤습니다.__
 
-react + ts + vite 개인프로젝트
+# 사용 기술스택 및 라이브러리
+ React
+ TypeScript
+ Vite
+ Recoil
+ axios
+ MSW
+ Firebase Authentication
+ Firebase Realtime Database
+ 
+React-dom
+React-hook-form
+React-icons
+React-js-pagination
+React-router-dom
+React-uuid
 
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# vercel 배포 주소
 
-Currently, two official plugins are available:
+[Game-Web-Site](https://game-web-project-eight.vercel.app/)
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
--   Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-    // other rules...
-    parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        project: ["./tsconfig.json", "./tsconfig.node.json"],
-        tsconfigRootDir: __dirname,
-    },
-};
-```
-
--   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
