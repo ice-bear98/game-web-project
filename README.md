@@ -3,19 +3,31 @@ __게임을 좋아하시는 분들이 게임검색하며 평점 및 사용자 �
 
 # 사용 기술스택 및 라이브러리
  React
+ 
  TypeScript
+ 
  Vite
+ 
  Recoil
+ 
  axios
+ 
  MSW
+ 
  Firebase Authentication
+ 
  Firebase Realtime Database
  
 React-dom
+
 React-hook-form
+
 React-icons
+
 React-js-pagination
+
 React-router-dom
+
 React-uuid
 
 
