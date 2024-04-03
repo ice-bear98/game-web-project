@@ -1,4 +1,4 @@
-![gamenews](https://github.com/ice-bear98/game-web-project/assets/122257455/de7b6f35-991f-4947-8814-0394504c2243)# game-web-project
+# game-web-project
 __게임을 좋아하시는 분들이 게임검색하며 평점 및 사용자 댓글 후기 같은걸 보면서 소통할 수 있고 게시판에서 자유롭게 대화나눌수 있는 사이트를 만들어봤습니다.__
 
 <div align=center><h1>📚 STACKS</h1></div>
