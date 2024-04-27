@@ -113,6 +113,7 @@ export default function Login() {
                         >
                             <FontAwesomeIcon className="" icon={faGoogle} />
                         </button>
+                        <div></div>
                     </div>
 
                     <div className="flex justify-between py-40 text-3xl space-x-20">
